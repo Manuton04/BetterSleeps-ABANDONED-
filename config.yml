@@ -1,0 +1,7 @@
+Config:
+  sleep-command-message: "%player% is asking for someone to sleep."
+  reload-message: "The config has been reloaded."                ##bettersleeps.reload permission
+  required-sleeping: "4"
+  sleeping-message: "%player% is sleeping now. %sleeping%/%total% players sleeping."
+  sleep-success-message: "Good morning everyone :D"
+  force-sleep-message: "%player% made the day appear :D"         ##bettersleeps.forcesleep

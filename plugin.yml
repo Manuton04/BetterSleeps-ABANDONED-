@@ -1,0 +1,11 @@
+main: manu.BetterSleaps.BetterSleaps
+version: 1.0.1
+name: BetterSleeps
+
+commands:
+  sleep:
+    description: Ask other players to sleep.
+  bettersleep:
+    description: Use /bettersleep or /bs to see the plugin commands.
+  bs:
+    description: Use /bettersleep or /bs to see the plugin commands.
