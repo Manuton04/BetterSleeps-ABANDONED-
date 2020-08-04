@@ -1,7 +1,14 @@
 Config:
   sleep-command-message: "%player% is asking for someone to sleep."
-  reload-message: "The config has been reloaded."                ##bettersleeps.reload permission
+  reload-message: "The config has been reloaded."                ##bettersleeps.reload  permission
   required-sleeping: "4"
+  change-required-sleepers-message: "The required players sleeping is now %total%."
   sleeping-message: "%player% is sleeping now. %sleeping%/%total% players sleeping."
   sleep-success-message: "Good morning everyone :D"
-  force-sleep-message: "%player% made the day appear :D"         ##bettersleeps.forcesleep
+  force-sleep-message: "%player% made the day appear :D"         ##bettersleeps.forcesleep  permission
+  
+  ##################################################################################################################
+  ## Put false if you don't want phantoms to spawn.##
+  phantoms:
+    spawn: "false"
+    change-message: "You decided to set phantoms spawn to %choice%."
