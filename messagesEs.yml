@@ -1,0 +1,20 @@
+Messages:
+  sleep-command-message: "&e%player% quiere que alguien duerma."
+  reload-message: "&eLor archivos fueron recargados."
+  change-required-sleepers-message: "&eEl numero de jugadores necesarios para dormir es ahora: %total%."
+  sleeping-message: "&e%player% esta durmiendo ahora. %sleeping%/%total% jugadores durmiendo."
+  sleep-success-message: "&eBuenos dias a todos :D"
+  force-sleep-message: "&e%player% hizo aparecer el dia :D"
+  phantoms-change-message:  "&eDecidiste poner el spawneo de phantoms en %choice%."
+  version-command-message: "&eLa version del plugin es: %version%"
+  bedset: "&eCama puesta!"
+  teleport-message: "&eTeletransportado a la cama!"
+  bed-coords: "&6Las coordenadas de tu cama son:"
+  no-bed: "&cNo tienes una cama!"
+  
+  no-perms: "&cNo tienes el permiso requerido!"
+  no-command: "&cEse comando no existe!"
+  
+  change-language-message: "&eHas cambiado el idioma a %choice%."
+  nosleep-nether-end-message: "&cNo podes dormir en el Nether o el End!"
+  explode-change-message: "&eHas cambiado que las camas exploten en el Nether o End a %choice%."

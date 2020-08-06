@@ -1,0 +1,20 @@
+Messages:
+  sleep-command-message: "&e%player% is asking for someone to sleep."
+  reload-message: "&eThe files have been reloaded."
+  change-required-sleepers-message: "&eThe required players sleeping is now %total%."
+  sleeping-message: "&e%player% is sleeping now. %sleeping%/%total% players sleeping."
+  sleep-success-message: "&eGood morning everyone :D"
+  force-sleep-message: "&e%player% made the day appear :D"
+  phantoms-change-message:  "&eYou decided to set phantoms spawn to %choice%."
+  version-command-message: "&eThe version of the plugin is: %version%"
+  bedset: "&eBed set!"
+  teleport-message: "&eTeleported to bed!"
+  bed-coords: "&6The coords of your bed are:"
+  no-bed: "&cYou don't have bed!"
+  
+  no-perms: "&cYou don't have the required permission!"
+  no-command: "&cThat command doesn't exist!"
+  
+  change-language-message: "&eYou have changed the language to %choice%."
+  nosleep-nether-end-message: "&cYou can sleep in the nether or end!"
+  explode-change-message: "&eYou have changed beds explode in Nether and End to %choice%."

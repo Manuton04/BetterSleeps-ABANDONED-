@@ -1,0 +1,20 @@
+Messages:
+  sleep-command-message: '&e%player% 正在深深地睡着'
+  reload-message: '&e插件配置已被重置'
+  change-required-sleepers-message: '&e现在玩家需要睡眠 %total%.'
+  sleeping-message: '&e%player% 正在睡觉. 进度：%sleeping%/%total% .'
+  sleep-success-message: '&e米娜桑 早上好！ :D'
+  force-sleep-message: '&e%player% 早点睡觉 可以睡到第二天早晨醒来 :D'
+  phantoms-change-message: '&e你决定把三天不睡觉生成的幻翼修改成 %choice%.'
+  version-command-message: '&e插件版本为: %version%'
+  bedset: '&e已设置床!'
+  teleport-message: '&e正在传送到你的床!'
+  bed-coords: '&6你床上有个什么鬼玩意:'
+  no-bed: '&c你没有设置一张床!'
+  
+  no-perms: '&c你没有相对应的权限啊 小兄弟'
+  no-command: '&c大哥啊 我们这里没找到你所输入的指令 请重新输入正确的指令!'
+  
+  change-language-message: '&e你把这个插件的语言调整为 %choice%.'
+  nosleep-nether-end-message: '&c你可以在末地和地狱里睡觉'
+  explode-change-message: '&e您有变了床爆炸在下地狱和结束至 %choice%.'
