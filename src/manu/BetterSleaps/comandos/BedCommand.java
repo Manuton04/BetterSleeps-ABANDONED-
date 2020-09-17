@@ -61,85 +61,227 @@ public class BedCommand extends ServerEvent implements CommandExecutor, TabExecu
 				
 				Player player = (Player) sender;
 				String name = player.getName();
-				
-
-				
-				if(plugin.BedLocations.contains(name)) {
-				
-				if(args.length > 0) {
-					if(args[0].equalsIgnoreCase("Locate")) {
-						if(player.hasPermission("bettersleeps.bed.locate")) {
-							
-							double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
-					        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
-					        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
 					
-				            int xInt = (int) Math.round(x);
-				            int yInt = (int) Math.round(y);
-				            int zInt = (int) Math.round(z);
-				          
-				          String bedCoords = "Messages.bed-coords";
-				          
-				          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
-				          
-				         
+					if(args.length == 1) {
+						
+					  if(plugin.BedLocations.contains(name)) {
+						  
+							if(args[0].equalsIgnoreCase("locate")) {
+								
+								if(player.hasPermission("bettersleeps.bed.locate")) {
+									
+									double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+						          
+						          String bedCoords = "Messages.bed-coords";
+						          
+						          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+						          
+						         
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+								}
+								
+							}else if(args[0].equalsIgnoreCase("tp")) {
+							
+								if(player.hasPermission("bettersleeps.bed.tp")) {
+									
+									String stringworld = plugin.getBedLocations().getString(name + "." + "world");
+								    World w = plugin.getServer().getWorld(stringworld);
+									
+								    
+									double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+								  	
+								    
+							          String teleport = "Messages.teleport-message";
+							          
+									Location l = new Location(w, xInt, yInt, zInt);
+									player.teleport(l);
+									
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+									
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									
+								}
+								
+							}
+						  
+					  }else {
+						  
+						  String noBed = "Messages.no-bed";
+
+						  player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
+						  
+					  }
+
+						
+					}else if(args.length == 2){
+						
+						String nameO = args[1];
+						
+						if(plugin.BedLocations.contains(nameO)) {
+							
+							if(args[0].equalsIgnoreCase("locate")) {
+								
+								if(name.equals(nameO)) {
+									
+									if(player.hasPermission("bettersleeps.bed.locate")) {
+										
+										double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+								        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+								        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+								
+							            int xInt = (int) Math.round(x);
+							            int yInt = (int) Math.round(y);
+							            int zInt = (int) Math.round(z);
+							          
+							          String bedCoords = "Messages.bed-coords";
+							          
+							          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+							          
+							         
+									}else {
+										
+										String noperms = "Messages.no-perms";
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									}
+									
+								}else {
+								
+								if(player.hasPermission("bettersleeps.bed.locate.others")) {
+									
+									double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+						          
+						          String bedCoords = "Messages.bed-coords";
+						          
+						          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+						          
+						         
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+								}
+							  }
+								
+							}else if(args[0].equalsIgnoreCase("tp")) {
+								
+								if(name.equals(nameO)) {
+									
+									if(player.hasPermission("bettersleeps.bed.tp")) {
+										
+										String stringworld = plugin.getBedLocations().getString(nameO + "." + "world");
+									    World w = plugin.getServer().getWorld(stringworld);
+										
+									    
+										double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+								        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+								        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+								
+							            int xInt = (int) Math.round(x);
+							            int yInt = (int) Math.round(y);
+							            int zInt = (int) Math.round(z);
+									  	
+									    
+								          String teleport = "Messages.teleport-message";
+								          
+										Location l = new Location(w, xInt, yInt, zInt);
+										player.teleport(l);
+										
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+										
+									
+										
+									}else {
+										
+										String noperms = "Messages.no-perms";
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+										
+									}
+									
+								}else {
+							
+								if(player.hasPermission("bettersleeps.bed.tp.others")) {
+									
+									String stringworld = plugin.getBedLocations().getString(nameO + "." + "world");
+								    World w = plugin.getServer().getWorld(stringworld);
+									
+								    
+									double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+								  	
+								    
+							          String teleport = "Messages.teleport-message";
+							          
+									Location l = new Location(w, xInt, yInt, zInt);
+									player.teleport(l);
+									
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+									
+								
+									
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									
+								}
+								
+							}
+								
+							}
+							
 						}else {
 							
-							String noperms = "Messages.no-perms";
-							player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+							String noBed = "Messages.no-bed";
+
+						    player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
+							  
+							
 						}
-				}
-					
-				          
-				}else if(args.length == 0) {
-					
-					if(player.hasPermission("bettersleeps.bed")) {
 						
-						String stringworld = plugin.getBedLocations().getString(name + "." + "world");
-					    World w = plugin.getServer().getWorld(stringworld);
 						
-					    
-						double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
-				        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
-				        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
-				
-			            int xInt = (int) Math.round(x);
-			            int yInt = (int) Math.round(y);
-			            int zInt = (int) Math.round(z);
-					  	
-					    
-				          String teleport = "Messages.teleport-message";
-				          
-						Location l = new Location(w, xInt, yInt, zInt);
-						player.teleport(l);
+					}else if(args.length == 0 || args.length > 2) {
 						
-						player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
-						
-					}else {
-						
-						String noperms = "Messages.no-perms";
-						player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+						player.sendMessage(plugin.name + ChatColor.RED+" Usage: /bed locate/tp (name) ");
 						
 					}
-					
-				}else if(!(args.length == 0)) {
-					
-					String nocommand = "Messages.no-command";
-					player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(nocommand)));
-					
-				}
-			  }else {
-				  
-				  String noBed = "Messages.no-bed";
-
-				  player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
-				  
-			  }
-
-		
 			}
 		 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -161,84 +303,227 @@ public class BedCommand extends ServerEvent implements CommandExecutor, TabExecu
 				
 				Player player = (Player) sender;
 				String name = player.getName();
-				
-
-				
-				if(plugin.BedLocations.contains(name)) {
-				
-				if(args.length > 0) {
-					if(args[0].equalsIgnoreCase("Locate")) {
-						if(player.hasPermission("bettersleeps.bed.locate")) {
-							
-							double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
-					        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
-					        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
 					
-				            int xInt = (int) Math.round(x);
-				            int yInt = (int) Math.round(y);
-				            int zInt = (int) Math.round(z);
-				          
-				          String bedCoords = "Messages.bed-coords";
-				          
-				          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
-				          
-				         
+					if(args.length == 1) {
+						
+					  if(plugin.BedLocations.contains(name)) {
+						  
+							if(args[0].equalsIgnoreCase("locate")) {
+								
+								if(player.hasPermission("bettersleeps.bed.locate")) {
+									
+									double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+						          
+						          String bedCoords = "Messages.bed-coords";
+						          
+						          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+						          
+						         
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+								}
+								
+							}else if(args[0].equalsIgnoreCase("tp")) {
+							
+								if(player.hasPermission("bettersleeps.bed.tp")) {
+									
+									String stringworld = plugin.getBedLocations().getString(name + "." + "world");
+								    World w = plugin.getServer().getWorld(stringworld);
+									
+								    
+									double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+								  	
+								    
+							          String teleport = "Messages.teleport-message";
+							          
+									Location l = new Location(w, xInt, yInt, zInt);
+									player.teleport(l);
+									
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+									
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									
+								}
+								
+							}
+						  
+					  }else {
+						  
+						  String noBed = "Messages.no-bed";
+
+						  player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
+						  
+					  }
+
+						
+					}else if(args.length == 2){
+						
+						String nameO = args[1];
+						
+						if(plugin.BedLocations.contains(nameO)) {
+							
+							if(args[0].equalsIgnoreCase("locate")) {
+								
+								if(name.equals(nameO)) {
+									
+									if(player.hasPermission("bettersleeps.bed.locate")) {
+										
+										double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+								        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+								        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+								
+							            int xInt = (int) Math.round(x);
+							            int yInt = (int) Math.round(y);
+							            int zInt = (int) Math.round(z);
+							          
+							          String bedCoords = "Messages.bed-coords";
+							          
+							          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+							          
+							         
+									}else {
+										
+										String noperms = "Messages.no-perms";
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									}
+									
+								}else {
+								
+								if(player.hasPermission("bettersleeps.bed.locate.others")) {
+									
+									double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+						          
+						          String bedCoords = "Messages.bed-coords";
+						          
+						          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+						          
+						         
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+								}
+							  }
+								
+							}else if(args[0].equalsIgnoreCase("tp")) {
+								
+								if(name.equals(nameO)) {
+									
+									if(player.hasPermission("bettersleeps.bed.tp")) {
+										
+										String stringworld = plugin.getBedLocations().getString(nameO + "." + "world");
+									    World w = plugin.getServer().getWorld(stringworld);
+										
+									    
+										double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+								        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+								        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+								
+							            int xInt = (int) Math.round(x);
+							            int yInt = (int) Math.round(y);
+							            int zInt = (int) Math.round(z);
+									  	
+									    
+								          String teleport = "Messages.teleport-message";
+								          
+										Location l = new Location(w, xInt, yInt, zInt);
+										player.teleport(l);
+										
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+										
+									
+										
+									}else {
+										
+										String noperms = "Messages.no-perms";
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+										
+									}
+									
+								}else {
+							
+								if(player.hasPermission("bettersleeps.bed.tp.others")) {
+									
+									String stringworld = plugin.getBedLocations().getString(nameO + "." + "world");
+								    World w = plugin.getServer().getWorld(stringworld);
+									
+								    
+									double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+								  	
+								    
+							          String teleport = "Messages.teleport-message";
+							          
+									Location l = new Location(w, xInt, yInt, zInt);
+									player.teleport(l);
+									
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+									
+								
+									
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									
+								}
+								
+							}
+								
+							}
+							
 						}else {
 							
-							String noperms = "Messages.no-perms";
-							player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+							String noBed = "Messages.no-bed";
+
+						    player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
+							  
+							
 						}
-				}
-					
-				          
-				}else if(args.length == 0) {
-					
-					if(player.hasPermission("bettersleeps.bed")) {
 						
-						String stringworld = plugin.getBedLocations().getString(name + "." + "world");
-					    World w = plugin.getServer().getWorld(stringworld);
 						
-					    
-						double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
-				        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
-				        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
-				
-			            int xInt = (int) Math.round(x);
-			            int yInt = (int) Math.round(y);
-			            int zInt = (int) Math.round(z);
-					    
-				          String teleport = "Messages.teleport-message";
-				          
-						Location l = new Location(w, xInt, yInt, zInt);
-						player.teleport(l);
+					}else if(args.length == 0 || args.length > 2) {
 						
-						player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
-						
-					}else {
-						
-						String noperms = "Messages.no-perms";
-						player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+						player.sendMessage(plugin.name + ChatColor.RED+" Usage: /bed locate/tp (name) ");
 						
 					}
-					
-				}else if(!(args.length == 0)) {
-					
-					String nocommand = "Messages.no-command";
-					player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(nocommand)));
-					
-				}
-			  }else {
-				  
-				  String noBed = "Messages.no-bed";
-
-				  player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
-				  
-			  }
-
-		
 			}
 		
 		
@@ -261,84 +546,227 @@ public class BedCommand extends ServerEvent implements CommandExecutor, TabExecu
 				
 				Player player = (Player) sender;
 				String name = player.getName();
-				
-
-				
-				if(plugin.BedLocations.contains(name)) {
-				
-				if(args.length > 0) {
-					if(args[0].equalsIgnoreCase("Locate")) {
-						if(player.hasPermission("bettersleeps.bed.locate")) {
-							
-							double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
-					        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
-					        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
 					
-				            int xInt = (int) Math.round(x);
-				            int yInt = (int) Math.round(y);
-				            int zInt = (int) Math.round(z);
-				          
-				          String bedCoords = "Messages.bed-coords";
-				          
-				          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
-				          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
-				          
-				         
+					if(args.length == 1) {
+						
+					  if(plugin.BedLocations.contains(name)) {
+						  
+							if(args[0].equalsIgnoreCase("locate")) {
+								
+								if(player.hasPermission("bettersleeps.bed.locate")) {
+									
+									double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+						          
+						          String bedCoords = "Messages.bed-coords";
+						          
+						          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+						          
+						         
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+								}
+								
+							}else if(args[0].equalsIgnoreCase("tp")) {
+							
+								if(player.hasPermission("bettersleeps.bed.tp")) {
+									
+									String stringworld = plugin.getBedLocations().getString(name + "." + "world");
+								    World w = plugin.getServer().getWorld(stringworld);
+									
+								    
+									double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+								  	
+								    
+							          String teleport = "Messages.teleport-message";
+							          
+									Location l = new Location(w, xInt, yInt, zInt);
+									player.teleport(l);
+									
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+									
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									
+								}
+								
+							}
+						  
+					  }else {
+						  
+						  String noBed = "Messages.no-bed";
+
+						  player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
+						  
+					  }
+
+						
+					}else if(args.length == 2){
+						
+						String nameO = args[1];
+						
+						if(plugin.BedLocations.contains(nameO)) {
+							
+							if(args[0].equalsIgnoreCase("locate")) {
+								
+								if(name.equals(nameO)) {
+									
+									if(player.hasPermission("bettersleeps.bed.locate")) {
+										
+										double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+								        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+								        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+								
+							            int xInt = (int) Math.round(x);
+							            int yInt = (int) Math.round(y);
+							            int zInt = (int) Math.round(z);
+							          
+							          String bedCoords = "Messages.bed-coords";
+							          
+							          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+							          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+							          
+							         
+									}else {
+										
+										String noperms = "Messages.no-perms";
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									}
+									
+								}else {
+								
+								if(player.hasPermission("bettersleeps.bed.locate.others")) {
+									
+									double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+						          
+						          String bedCoords = "Messages.bed-coords";
+						          
+						          player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(bedCoords)));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "X: " + ChatColor.GOLD + Integer.toString(xInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Y: " + ChatColor.GOLD + Integer.toString(yInt));
+						          player.sendMessage(plugin.name+" "+ChatColor.RED + "Z: " + ChatColor.GOLD + Integer.toString(zInt));
+						          
+						         
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+								}
+							  }
+								
+							}else if(args[0].equalsIgnoreCase("tp")) {
+								
+								if(name.equals(nameO)) {
+									
+									if(player.hasPermission("bettersleeps.bed.tp")) {
+										
+										String stringworld = plugin.getBedLocations().getString(nameO + "." + "world");
+									    World w = plugin.getServer().getWorld(stringworld);
+										
+									    
+										double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+								        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+								        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+								
+							            int xInt = (int) Math.round(x);
+							            int yInt = (int) Math.round(y);
+							            int zInt = (int) Math.round(z);
+									  	
+									    
+								          String teleport = "Messages.teleport-message";
+								          
+										Location l = new Location(w, xInt, yInt, zInt);
+										player.teleport(l);
+										
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+										
+									
+										
+									}else {
+										
+										String noperms = "Messages.no-perms";
+										player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+										
+									}
+									
+								}else {
+							
+								if(player.hasPermission("bettersleeps.bed.tp.others")) {
+									
+									String stringworld = plugin.getBedLocations().getString(nameO + "." + "world");
+								    World w = plugin.getServer().getWorld(stringworld);
+									
+								    
+									double x = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".x"));
+							        double y = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".y"));
+							        double z = Double.valueOf(plugin.BedLocations.getString((nameO) +  ".z"));
+							
+						            int xInt = (int) Math.round(x);
+						            int yInt = (int) Math.round(y);
+						            int zInt = (int) Math.round(z);
+								  	
+								    
+							          String teleport = "Messages.teleport-message";
+							          
+									Location l = new Location(w, xInt, yInt, zInt);
+									player.teleport(l);
+									
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
+									
+								
+									
+								}else {
+									
+									String noperms = "Messages.no-perms";
+									player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+									
+								}
+								
+							}
+								
+							}
+							
 						}else {
 							
-							String noperms = "Messages.no-perms";
-							player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+							String noBed = "Messages.no-bed";
+
+						    player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
+							  
+							
 						}
-				}
-					
-				          
-				}else if(args.length == 0) {
-					
-					if(player.hasPermission("bettersleeps.bed")) {
 						
-						String stringworld = plugin.getBedLocations().getString(name + "." + "world");
-					    World w = plugin.getServer().getWorld(stringworld);
 						
-					    
-						double x = Double.valueOf(plugin.BedLocations.getString((name) +  ".x"));
-				        double y = Double.valueOf(plugin.BedLocations.getString((name) +  ".y"));
-				        double z = Double.valueOf(plugin.BedLocations.getString((name) +  ".z"));
-				
-			            int xInt = (int) Math.round(x);
-			            int yInt = (int) Math.round(y);
-			            int zInt = (int) Math.round(z);
-					    
-				          String teleport = "Messages.teleport-message";
-				          
-						Location l = new Location(w, xInt, yInt, zInt);
-						player.teleport(l);
+					}else if(args.length == 0 || args.length > 2) {
 						
-						player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(teleport)));
-						
-					}else {
-						
-						String noperms = "Messages.no-perms";
-						player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noperms)));
+						player.sendMessage(plugin.name + ChatColor.RED+" Usage: /bed locate/tp (name) ");
 						
 					}
-					
-				}else if(!(args.length == 0)) {
-					
-					String nocommand = "Messages.no-command";
-					player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(nocommand)));
-					
-				}
-			  }else {
-				  
-				  String noBed = "Messages.no-bed";
-
-				  player.sendMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(noBed)));
-				  
-			  }
-
-		
 			}
 
 
@@ -365,7 +793,7 @@ public class BedCommand extends ServerEvent implements CommandExecutor, TabExecu
 	@Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length != 1) return null;
-        return Arrays.asList("locate");
+        return Arrays.asList("locate", "tp");
     }
 	
 }

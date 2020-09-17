@@ -296,8 +296,7 @@ public class PrincipalCommand extends ServerEvent implements CommandExecutor, Ta
 		}else {
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep or /bs to see this page.");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /sleep to ask for someone to sleep.");
-			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed to teleport to your bed.");
-			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed locate to see where is your bed.");
+			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed to see bed commands.");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep explode to change if beds explode in Nether and End.");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep language to change the language(only english, español and chinese).");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep setsleepers to change the number of players required to sleep.");
@@ -572,8 +571,7 @@ public class PrincipalCommand extends ServerEvent implements CommandExecutor, Ta
 		}else {
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep or /bs to see this page.");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /sleep to ask for someone to sleep.");
-			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed to teleport to your bed.");
-			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed locate to see where is your bed.");
+			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed to see bed commands.");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep explode to change if beds explode in Nether and End.");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep language to change the language(only english, español and chinese).");
 			player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep setsleepers to change the number of players required to sleep.");
@@ -848,8 +846,7 @@ public class PrincipalCommand extends ServerEvent implements CommandExecutor, Ta
 				}else {
 					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep or /bs to see this page.");
 					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /sleep to ask for someone to sleep.");
-					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed to teleport to your bed.");
-					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed locate to see where is your bed.");
+					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bed to see bed commands.");
 					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep explode to change if beds explode in Nether and End.");
 					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep language to change the language(only english, español and chinese).");
 					player.sendMessage(plugin.name + ChatColor.YELLOW+" Use /bettersleep setsleepers to change the number of players required to sleep.");

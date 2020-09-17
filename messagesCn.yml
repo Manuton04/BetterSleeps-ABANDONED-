@@ -10,7 +10,7 @@ Messages:
   bedset: '&e已设置床!'
   teleport-message: '&e正在传送到你的床!'
   bed-coords: '&6你床上有个什么鬼玩意:'
-  no-bed: '&c你没有设置一张床!'
+  no-bed: '&c那张床不存在!'
   
   no-perms: '&c你没有相对应的权限啊 小兄弟'
   no-command: '&c大哥啊 我们这里没找到你所输入的指令 请重新输入正确的指令!'

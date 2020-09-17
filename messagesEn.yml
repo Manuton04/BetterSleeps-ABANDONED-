@@ -9,8 +9,8 @@ Messages:
   version-command-message: "&eThe version of the plugin is: %version%"
   bedset: "&eBed set!"
   teleport-message: "&eTeleported to bed!"
-  bed-coords: "&6The coords of your bed are:"
-  no-bed: "&cYou don't have bed!"
+  bed-coords: "&6The coords of the bed are:"
+  no-bed: "&cThat bed doesn't exist!"
   
   no-perms: "&cYou don't have the required permission!"
   no-command: "&cThat command doesn't exist!"

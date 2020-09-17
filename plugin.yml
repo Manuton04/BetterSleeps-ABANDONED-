@@ -1,5 +1,5 @@
 main: manu.BetterSleaps.BetterSleaps
-version: 1.4.0
+version: 1.5.0
 name: BetterSleeps
 
 commands:
@@ -10,4 +10,4 @@ commands:
   bs:
     description: Use /bettersleep or /bs to see the plugin commands.
   bed:
-    description: Use /bed to teleport to your bed.
+    description: Use /bed to teleport to your bed or other's bed, you can also locate them.

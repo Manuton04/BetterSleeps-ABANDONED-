@@ -38,6 +38,9 @@ import manu.BetterSleaps.BetterSleaps;
 	@EventHandler
 	public void atBed(PlayerBedEnterEvent atbed) {
 		
+		
+		plugin.reloadBedLocations();
+		
 		String path = "Config.language";
 		FileConfiguration config = plugin.getConfig();
 		
@@ -58,7 +61,7 @@ import manu.BetterSleaps.BetterSleaps;
 				if (atbed.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.OK){
 					
 					
-					if(world.getTime() >= 13000) {
+					
 
 						sleeping++;
 						String sleeping1 = String.valueOf(sleeping);
@@ -81,7 +84,7 @@ import manu.BetterSleaps.BetterSleaps;
 						
 						  Bukkit.broadcastMessage(plugin.name + " " + ChatColor.translateAlternateColorCodes('&', messages.getString(text1)).replaceAll("%player%", player.getName()).replaceAll("%total%", config.getString(total1)).replaceAll("%sleeping%", sleeping1));
 					  }
-					}
+					
 					
 					
 				}
@@ -151,7 +154,7 @@ import manu.BetterSleaps.BetterSleaps;
 				if (atbed.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.OK){
 					
 					
-					if(world.getTime() >= 13000) {
+					
 
 						sleeping++;
 						String sleeping1 = String.valueOf(sleeping);
@@ -176,7 +179,7 @@ import manu.BetterSleaps.BetterSleaps;
 					
 					}
 					
-				}
+				
 					
 				}
 				
@@ -252,7 +255,7 @@ import manu.BetterSleaps.BetterSleaps;
 			if (atbed.getBedEnterResult() == PlayerBedEnterEvent.BedEnterResult.OK){
 				
 				
-				if(world.getTime() >= 13000) {
+				
 
 					sleeping++;
 					String sleeping1 = String.valueOf(sleeping);
@@ -277,7 +280,7 @@ import manu.BetterSleaps.BetterSleaps;
 				
 				}
 				
-			}
+			
 				
 			}
 			
